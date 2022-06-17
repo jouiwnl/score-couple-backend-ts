@@ -14,6 +14,13 @@ export class MovieController {
     return movies;
   };
 
+  @Get("/colunas/:id")
+  async getBySectionId(@Param("id") sectionId: number): Promise<Movie[]> {
+    const movies = await this.movieService.getAllBySection(sectionId);
+
+    return movies;
+  }
+
   @Get(":id")
   async getById(@Param("id") movieId: number): Promise<Movie> {
     const movie = await this.movieService.getById(movieId);

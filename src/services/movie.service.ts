@@ -10,6 +10,19 @@ export class MovieService {
     return movies;
   }
 
+  async getAllBySection(columnId: number): Promise<Movie[]> {
+    const movies = await Movie.find({ 
+      where: { 
+        column: { 
+          id: columnId 
+        } 
+      },
+      order: { status: "DESC" }
+    });
+
+    return movies;
+  }
+
   async getById(movieId: number): Promise<Movie> {
     const movie = await Movie.findOne({ where: { id: movieId } });
 
