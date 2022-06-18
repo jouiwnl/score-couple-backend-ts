@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Inject, Param, Post, Put } from "@nestjs/common";
-import { Movie } from "src/models/movie.model";
+import { Movie, MovieStatus } from "src/models/movie.model";
 import { MovieService } from "src/services/movie.service";
 
 @Controller("/movies")
@@ -30,6 +30,7 @@ export class MovieController {
 
   @Post("/column/:id")
   async create(@Param("id") columnId: number, @Body() movie: Movie): Promise<Movie> {
+    movie.status = MovieStatus.NOTSTARTED;
     const created = await this.movieService.create(movie, columnId);
 
     return created;

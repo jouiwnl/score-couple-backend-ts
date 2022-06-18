@@ -26,8 +26,7 @@ export class Movie extends BaseEntity {
 
     @Column({
       type: "enum",
-      enum: MovieStatus,
-      default: MovieStatus.NOTSTARTED
+      enum: MovieStatus
     })
     status: MovieStatus;
 
