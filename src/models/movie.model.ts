@@ -3,10 +3,10 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColu
 import { Section } from "./section.model";
 
 export enum MovieStatus {
-  NOTSTARTED,
-  CANCELED,
-  COMPLETED,
-  DOING
+  NOTSTARTED = "NOTSTARTED",
+  CANCELED = "CANCELED",
+  COMPLETED = "COMPLETED",
+  DOING = "DOING"
 }
 
 @Entity({ name: 'movies' })
