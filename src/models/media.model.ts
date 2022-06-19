@@ -9,6 +9,11 @@ export enum MediaStatus {
   DOING = "DOING"
 }
 
+export enum MediaType {
+  MOVIE = "MOVIE",
+  SERIE = "SERIE"
+}
+
 @Entity({ name: 'medias' })
 export class Media extends BaseEntity {
     
@@ -47,6 +52,13 @@ export class Media extends BaseEntity {
 
     @Column({ name: "date_to_see" })
     dateToSee: string;
+
+    @Column({
+      name: "media_type",
+      type: "enum",
+      enum: MediaType
+    })
+    mediaType: MediaType;
 
     @Exclude()
     @ManyToOne(type => Section, section => section.medias)
