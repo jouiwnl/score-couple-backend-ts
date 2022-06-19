@@ -2,15 +2,15 @@ import { Exclude } from "class-transformer";
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Section } from "./section.model";
 
-export enum MovieStatus {
+export enum MediaStatus {
   NOTSTARTED = "NOTSTARTED",
   CANCELED = "CANCELED",
   COMPLETED = "COMPLETED",
   DOING = "DOING"
 }
 
-@Entity({ name: 'movies' })
-export class Movie extends BaseEntity {
+@Entity({ name: 'medias' })
+export class Media extends BaseEntity {
     
     @PrimaryGeneratedColumn()
     id: number;
@@ -26,9 +26,9 @@ export class Movie extends BaseEntity {
 
     @Column({
       type: "enum",
-      enum: MovieStatus
+      enum: MediaStatus
     })
-    status: MovieStatus;
+    status: MediaStatus;
 
     @Column({ name: "poster_url" })
     posterUrl: string;
@@ -39,8 +39,8 @@ export class Movie extends BaseEntity {
     @Column({ name: "runtime" })
     runtime: number;
 
-    @Column({ name: "movie_description" })
-    movieDescription: string;
+    @Column({ name: "media_description" })
+    mediaDescription: string;
 
     @Column({ name: "genre" })
     genre: string;
@@ -49,7 +49,7 @@ export class Movie extends BaseEntity {
     dateToSee: string;
 
     @Exclude()
-    @ManyToOne(type => Section, section => section.movies)
+    @ManyToOne(type => Section, section => section.medias)
     @JoinColumn({ name: "id_columns", referencedColumnName: "id" })
     column: Section;
 }

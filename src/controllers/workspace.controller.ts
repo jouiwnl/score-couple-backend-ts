@@ -1,5 +1,5 @@
 import { Controller, Get, Inject, Param } from "@nestjs/common";
-import { Movie } from "src/models/movie.model";
+import { Media } from "src/models/media.model";
 import { Workspace } from "src/models/workspace.model";
 import { WorkSpaceService } from "src/services/workspace.service";
 
@@ -22,9 +22,9 @@ export class WorkSpaceController {
     }
 
     @Get(":workspaceId/shuffle")
-    async shuffleAndPick(@Param("workspaceId") workspaceId: number): Promise<Movie> {
-      const movieShuffled = await this.workspaceService.shuflleAndPick(workspaceId);
+    async shuffleAndPick(@Param("workspaceId") workspaceId: number): Promise<Media> {
+      const mediaShuffled = await this.workspaceService.shuflleAndPick(workspaceId);
 
-      return movieShuffled;
+      return mediaShuffled;
     }
 }

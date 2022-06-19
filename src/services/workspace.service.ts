@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { Movie } from "src/models/movie.model";
+import { Media } from "src/models/media.model";
 import { User } from "src/models/user.model";
 import { Workspace } from "src/models/workspace.model";
 import { In } from "typeorm";
@@ -29,14 +29,14 @@ export class WorkSpaceService {
           id: userId 
         } 
       },
-      relations: ["colunas.movies"]
+      relations: ["colunas.medias"]
     })
 
     return workspace;
   }
 
-  async shuflleAndPick(workspaceId: number): Promise<Movie> {
-    let movies = await Movie.find({
+  async shuflleAndPick(workspaceId: number): Promise<Media> {
+    let medias = await Media.find({
        where: { 
         column: { 
           workspace: { 
@@ -48,11 +48,11 @@ export class WorkSpaceService {
       } 
     });
 
-    if (!movies.length) {
+    if (!medias.length) {
       throw new NotFoundException(`Nenhum filme foi sorteado :(`);
     }
 
-    const shuffled = _.shuffle(movies);
+    const shuffled = _.shuffle(medias);
 
     return shuffled[0];
   }

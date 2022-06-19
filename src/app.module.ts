@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from './config/config.service';
-import { MovieModule } from './modules/movie.module';
+import { MediaModule } from './modules/media.module';
 import { SectionModule } from './modules/section.module';
 import { UserModule } from './modules/user.module';
 import { WorkspaceModule } from './modules/workspace.module';
@@ -12,7 +12,7 @@ import { WorkspaceModule } from './modules/workspace.module';
     UserModule,
     WorkspaceModule,
     SectionModule,
-    MovieModule
+    MediaModule
   ]
 })
 export class AppModule {}

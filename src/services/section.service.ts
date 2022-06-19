@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { MovieStatus } from "src/models/movie.model";
+import { MediaStatus } from "src/models/media.model";
 import { Section } from "src/models/section.model";
 
 const enumOrder = {
-  [MovieStatus.DOING]: 1,
-  [MovieStatus.NOTSTARTED]: 2,
-  [MovieStatus.COMPLETED]: 3,
-  [MovieStatus.CANCELED]: 4
+  [MediaStatus.DOING]: 1,
+  [MediaStatus.NOTSTARTED]: 2,
+  [MediaStatus.COMPLETED]: 3,
+  [MediaStatus.CANCELED]: 4
 } as const;
 
 @Injectable()
@@ -25,7 +25,7 @@ export class SectionService {
           id: id 
         } 
       },
-      relations: ["movies"],
+      relations: ["medias"],
       order: { created_at: "ASC" }
     });
 
@@ -34,7 +34,7 @@ export class SectionService {
         id: section.id,
         title: section.title,
         created_at: section.created_at,
-        movies: section.movies.sort((a, b) => enumOrder[MovieStatus[a.status]] - enumOrder[MovieStatus[b.status]])
+        medias: section.medias.sort((a, b) => enumOrder[MediaStatus[a.status]] - enumOrder[MediaStatus[b.status]])
       }
     })
 

@@ -1,5 +1,5 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
-import { Movie } from "./movie.model";
+import { Media } from "./media.model";
 import { Workspace } from "./workspace.model";
 
 @Entity({ name: "colunas" })
@@ -15,8 +15,8 @@ export class Section extends BaseEntity{
   @JoinColumn({ name: "id_workspaces", referencedColumnName: "id" })
   workspace: Workspace;
 
-  @OneToMany(type => Movie, movie => movie.column)
-  movies: Movie[];
+  @OneToMany(type => Media, media => media.column)
+  medias: Media[];
 
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
   created_at: Date;
