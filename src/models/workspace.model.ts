@@ -8,7 +8,7 @@ export class Workspace extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(type => Section, section => section.workspace)
+  @OneToMany(type => Section, section => section.workspace, { cascade: true })
   colunas: Section[]
 
   @ManyToOne(type => User, user => user.workspaces)

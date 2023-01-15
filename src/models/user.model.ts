@@ -16,6 +16,6 @@ export class User extends BaseEntity{
   @Column({ name: "avatar_url" })
   avatarUrl: string;
 
-  @OneToMany(type => Workspace, workspace => workspace.user)
+  @OneToMany(type => Workspace, workspace => workspace.user, { cascade: true })
   workspaces: Workspace[]
 }

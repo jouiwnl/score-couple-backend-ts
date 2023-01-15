@@ -15,7 +15,7 @@ export class Section extends BaseEntity{
   @JoinColumn({ name: "id_workspaces", referencedColumnName: "id" })
   workspace: Workspace;
 
-  @OneToMany(type => Media, media => media.column)
+  @OneToMany(type => Media, media => media.column, { cascade: true })
   medias: Media[];
 
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
