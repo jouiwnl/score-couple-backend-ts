@@ -32,7 +32,23 @@ export class WorkSpaceService {
       relations: ["colunas.medias"]
     })
 
-    return workspace;
+    if (workspace) {
+      return workspace;
+    }
+
+    const user = await User.findOne({
+      where: {
+        id: userId
+      }
+    });
+
+    const newWorkspace = Workspace.create({
+      user: user
+    });
+
+    const saved = await Workspace.save(newWorkspace);
+
+    return saved;
   }
 
   async shuflleAndPick(workspaceId: number): Promise<Media> {
