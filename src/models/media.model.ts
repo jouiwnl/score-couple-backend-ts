@@ -26,7 +26,13 @@ export class Media extends BaseEntity {
     @Column({ name: "name" })
     name: string;
 
-    @Column({ name: "score", nullable: true })
+    @Column({ 
+      name: "score", 
+      nullable: true, 
+      type: "decimal", 
+      precision: 5,
+      scale: 2 
+    })
     score: number;
 
     @Column({
