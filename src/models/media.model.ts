@@ -26,7 +26,7 @@ export class Media extends BaseEntity {
     @Column({ name: "name" })
     name: string;
 
-    @Column({ name: "score" })
+    @Column({ name: "score", nullable: true })
     score: number;
 
     @Column({
