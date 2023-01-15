@@ -69,7 +69,10 @@ export class Media extends BaseEntity {
     mediaType: MediaType;
 
     @Exclude()
-    @ManyToOne(type => Section, section => section.medias)
+    @ManyToOne(type => Section, section => section.medias, {
+      onDelete: 'CASCADE',
+      orphanedRowAction: "delete"
+    })
     @JoinColumn({ name: "id_columns", referencedColumnName: "id" })
     column: Section;
 }
