@@ -33,7 +33,8 @@ class ConfigService {
       password: this.getValue('POSTGRES_PASSWORD'),
       database: this.getValue('POSTGRES_DATABASE'),
       entities: [__dirname + '/../**/*.model.js'],
-      ssl: { rejectUnauthorized: false }
+      ssl: { rejectUnauthorized: false },
+      synchronize: true
     };
   }
 
