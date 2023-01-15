@@ -15,7 +15,11 @@ export class Section extends BaseEntity{
   @JoinColumn({ name: "id_workspaces", referencedColumnName: "id" })
   workspace: Workspace;
 
-  @OneToMany(type => Media, media => media.column, { cascade: true, orphanedRowAction: "delete" })
+  @OneToMany(type => Media, media => media.column, { 
+    cascade: true, 
+    orphanedRowAction: "delete", 
+    onDelete: "CASCADE" 
+  })
   medias: Media[];
 
   @CreateDateColumn({ type: "timestamp", default: () => "CURRENT_TIMESTAMP(6)" })
