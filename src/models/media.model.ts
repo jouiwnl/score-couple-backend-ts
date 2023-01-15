@@ -31,32 +31,34 @@ export class Media extends BaseEntity {
 
     @Column({
       type: "enum",
-      enum: MediaStatus
+      enum: MediaStatus, 
+      nullable: true
     })
     status: MediaStatus;
 
-    @Column({ name: "poster_url" })
+    @Column({ name: "poster_url", nullable: true })
     posterUrl: string;
 
-    @Column({ name: "release_date" })
+    @Column({ name: "release_date", nullable: true })
     releaseDate: string;
 
-    @Column({ name: "runtime" })
+    @Column({ name: "runtime", nullable: true })
     runtime: number;
 
-    @Column({ name: "media_description" })
+    @Column({ name: "media_description", nullable: true })
     mediaDescription: string;
 
-    @Column({ name: "genre" })
+    @Column({ name: "genre", nullable: true })
     genre: string;
 
-    @Column({ name: "date_to_see" })
+    @Column({ name: "date_to_see", nullable: true })
     dateToSee: string;
 
     @Column({
       name: "media_type",
       type: "enum",
-      enum: MediaType
+      enum: MediaType, 
+      nullable: true
     })
     mediaType: MediaType;
 
